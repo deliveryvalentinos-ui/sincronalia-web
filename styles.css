@@ -75,3 +75,8 @@ nav>a:not(.btn){font-size:clamp(14px,1.2vw,16px);font-weight:800;letter-spacing:
 @media(min-width:801px) and (max-width:1000px){header{height:78px;position:relative}.menu{display:block;background:none;border:1px solid #8d7caa;border-radius:6px;padding:7px 12px;color:#fff;font-size:13px;cursor:pointer}header nav:not(.guide-nav){display:none;position:absolute;top:100%;left:0;right:0;padding:25px 5%;background:#1b0730;color:#fff;z-index:20;border-bottom:1px solid #3a2a55}header nav:not(.guide-nav).open{display:flex;flex-direction:column;align-items:stretch;gap:20px}header nav:not(.guide-nav)>a:not(.btn){font-size:18px}}
 .steps article>span{width:30px;height:30px;border-radius:8px;background:var(--violet);color:var(--lime);font-size:11px;letter-spacing:.5px}
 @media(max-width:520px){.steps article{grid-template-columns:34px 1fr}}
+.guide-card{background:var(--violet);border-color:var(--violet);color:#fff;position:relative;padding-right:64px;transition:transform .2s,background .2s}
+.guide-card h3{color:#fff;font-size:20px}
+.guide-card p{color:#d8d1e6}
+.guide-card:after{content:'↗';position:absolute;right:22px;top:50%;translate:0 -50%;width:34px;height:34px;border-radius:50%;background:var(--lime);color:var(--violet);display:grid;place-items:center;font-weight:700}
+.guide-card:hover{background:#3a2d63;transform:translateY(-2px);outline-color:var(--lime)}
