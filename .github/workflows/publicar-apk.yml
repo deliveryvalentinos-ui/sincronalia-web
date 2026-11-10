@@ -1,0 +1,31 @@
+name: Publicar APK
+on:
+  workflow_dispatch:
+    inputs:
+      apk_url:
+        description: "URL del APK (EAS)"
+        required: true
+      tag:
+        description: "Etiqueta de la release"
+        required: true
+        default: "v1.0.0"
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar APK
+        run: |
+          curl -fL --retry 3 -o sincronalia.apk "${{ inputs.apk_url }}"
+          ls -l sincronalia.apk
+          unzip -l sincronalia.apk | grep -q AndroidManifest.xml
+      - name: Crear release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ inputs.tag }}" sincronalia.apk \
+            --repo "${{ github.repository }}" \
+            --title "Sincronalia ${{ inputs.tag }}" \
+            --notes "App Android de Sincronalia. 30 días gratis, después suscripción." \
+            --latest
