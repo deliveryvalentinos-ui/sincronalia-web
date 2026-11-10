@@ -80,3 +80,17 @@ nav>a:not(.btn){font-size:clamp(14px,1.2vw,16px);font-weight:800;letter-spacing:
 .guide-card p{color:#d8d1e6}
 .guide-card:after{content:'↗';position:absolute;right:22px;top:50%;translate:0 -50%;width:34px;height:34px;border-radius:50%;background:var(--lime);color:var(--violet);display:grid;place-items:center;font-weight:700}
 .guide-card:hover{background:#3a2d63;transform:translateY(-2px);outline-color:var(--lime)}
+.contact-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px}
+.contact-actions .btn{flex:1 1 260px;max-width:340px;justify-content:space-between;color:var(--violet);font-weight:700}
+.contact .app-download{margin:14px 0 0}
+.contact .app-download small{display:block;margin:0;opacity:.85;font-size:11px;line-height:1.5}
+.contact-mails{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid #514566}
+.contact .mail-item{flex:1 1 260px;max-width:340px;margin:0;display:flex;flex-direction:column;gap:4px;font-size:15px}
+.mail-item a{color:var(--lime);font-weight:650;text-decoration:underline;text-underline-offset:4px}
+.mail-item small{font-size:11px;color:#d2cbdc}
+@media(max-width:520px){.contact-actions .btn,.contact .mail-item{flex-basis:100%;max-width:none}}
+.contact-actions .btn,.contact .mail-item{max-width:380px}
+.contact-actions .btn{white-space:nowrap;padding-left:22px;padding-right:22px}
+.contact-actions,.contact-mails{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:740px}
+.contact-actions .btn,.contact .mail-item{max-width:none;flex:none}
+@media(max-width:600px){.contact-actions,.contact-mails{grid-template-columns:1fr}}
