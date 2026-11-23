@@ -1,7 +1,4 @@
 # Sincronalia web
 
-Web estática de https://sincronalia.es y descarga de la app Android.
-El APK se publica en *Releases* (`sincronalia.apk`); los botones apuntan a
-`releases/latest/download/sincronalia.apk`, así que basta con subir una release nueva para actualizar la descarga.
-
-La descarga apunta a la última release de GitHub.
+Web estática de https://sincronalia.es. Los botones de descarga apuntan a la ficha de la app en Google Play
+(`com.cheflogic.app`); ya no hace falta instalar ningún APK a mano.
