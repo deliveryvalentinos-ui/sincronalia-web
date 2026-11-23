@@ -100,3 +100,13 @@ footer:not(.sub-footer) p,footer:not(.sub-footer)>div,footer:not(.sub-footer) sp
 .contact:after{content:'Imagen ilustrativa generada con IA.';position:absolute;right:18px;bottom:12px;font-size:10px;color:#e9e4f2;opacity:.8}
 .contact-symbol{display:none}
 @media(max-width:800px){.contact{background:linear-gradient(180deg,#281D48f5 0%,#281D48ee 100%),url(/cocina-en-produccion.jpg) center/cover no-repeat,var(--violet)}}
+/* Portada con captura de la app: marco de móvil junto al texto, sin fondo a pantalla completa */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center}
+.hero-photo{position:relative;inset:auto;width:100%;max-width:290px;height:auto;margin:0 auto;border-radius:30px;border:6px solid #1b0730;box-shadow:0 24px 60px #0007;overflow:hidden;z-index:1}
+.hero-photo:after,.hero-photo:before{display:none!important;content:none!important}
+.hero-photo img{width:100%;height:auto;object-fit:contain;object-position:center}
+.hero-photo figcaption{position:static;display:block;padding:12px 10px 14px;background:#1b0730;color:#fff;text-align:center}
+.hero-photo figcaption strong{display:none}
+.hero-photo figcaption span{display:block;font-size:11px;letter-spacing:1.5px;color:var(--lime)}
+.hero-photo figcaption small{display:block;margin-top:4px;font-size:10px;color:#d2cbdc}
+@media(max-width:800px){.hero{grid-template-columns:1fr;gap:34px;min-height:0}.hero-photo{max-width:250px}}
