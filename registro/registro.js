@@ -26,6 +26,19 @@
       this.textContent = visible ? "Mostrar" : "Ocultar";
       this.setAttribute("aria-pressed", String(!visible));
     });
+    var hint = $("#pw-hint");
+    var hintBase = hint ? hint.textContent : "";
+    pw.addEventListener("input", function () {
+      if (!hint) return;
+      var v = pw.value;
+      if (!v) { hint.textContent = hintBase; return; }
+      var falta = [];
+      if (v.length < 12) falta.push("te faltan " + (12 - v.length) + " caracteres");
+      if (!/[A-Z]/.test(v)) falta.push("una mayúscula");
+      if (!/[a-z]/.test(v)) falta.push("una minúscula");
+      if (!/\d/.test(v)) falta.push("un número");
+      hint.textContent = falta.length ? "Aún necesitas: " + falta.join(", ") + "." : "Contraseña válida.";
+    });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var v = pw.value;
@@ -57,6 +70,7 @@
         return res.json().catch(function () { return {}; }).then(function (data) { return { res: res, data: data }; });
       }).then(function (r) {
         if (r.res.status === 202) {
+          if (window.umami && umami.track) umami.track("registro-enviado");
           form.hidden = true;
           $("#reg-done").hidden = false;
           $("#reg-done-email").textContent = body.email;
@@ -93,6 +107,7 @@
         return res.json().catch(function () { return {}; }).then(function (data) { return { res: res, data: data }; });
       }).then(function (r) {
         if (r.res.ok && r.data && r.data.ok) {
+          if (window.umami && umami.track) umami.track("cuenta-activada");
           $("#verify-box").hidden = true;
           $("#verify-done").hidden = false;
           $("#verify-email").textContent = r.data.email;
