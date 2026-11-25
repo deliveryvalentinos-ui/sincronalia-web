@@ -99,3 +99,5 @@ footer:not(.sub-footer) p,footer:not(.sub-footer)>div,footer:not(.sub-footer) sp
 .contact{position:relative;background:linear-gradient(90deg,#281D48 0%,#281D48f2 42%,#281d4899 100%),url(/cocina-en-produccion.jpg) center 30%/cover no-repeat,var(--violet)}
 .contact-symbol{display:none}
 @media(max-width:800px){.contact{background:linear-gradient(180deg,#281D48f5 0%,#281D48ee 100%),url(/cocina-en-produccion.jpg) center/cover no-repeat,var(--violet)}}
+
+.hero .quiet a,.app-download small a{color:inherit;text-decoration:underline;text-underline-offset:2px}
