@@ -10,7 +10,7 @@
     if (!email || email.indexOf("@") < 1) { msg.textContent = "Escribe un correo válido."; msg.className = "reg-msg err"; msg.hidden = false; return; }
     var btn = form.querySelector("button[type=submit]");
     btn.disabled = true;
-    fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email, portal: $("#portal").checked }) })
+    fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email, portal: $("#portal").checked, tz: (function () { try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) { return ""; } })() }) })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { r: r, d: d }; }); })
       .then(function (x) {
         if (x.r.ok) { form.hidden = true; $("#sub-done").hidden = false; $("#sub-done").focus(); return; }
