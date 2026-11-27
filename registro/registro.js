@@ -123,4 +123,46 @@
       });
     });
   }
+
+  // Entrar o registrarse con Google (mismo identificador de cliente que la app).
+  var GOOGLE_CLIENT_ID = "170513312217-639r9sbaec00ioroviusgc5572ppcdn1.apps.googleusercontent.com";
+  var AUTH_API = "https://cheflogic-pruebas.onrender.com/api/auth/google";
+  function initGoogle(tries) {
+    var box = $("#g-btn");
+    if (!box) return;
+    if (!(window.google && google.accounts && google.accounts.id)) {
+      if (tries < 40) setTimeout(function () { initGoogle(tries + 1); }, 250);
+      else { var gb = $("#g-block"); if (gb) gb.hidden = true; }
+      return;
+    }
+    google.accounts.id.initialize({
+      client_id: GOOGLE_CLIENT_ID,
+      callback: function (resp) {
+        var gm = $("#g-msg");
+        gm.hidden = true;
+        fetch(AUTH_API, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id_token: resp.credential, accepted_terms: true })
+        }).then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (d) { return { res: res, d: d }; });
+        }).then(function (r) {
+          if (r.res.ok) {
+            if (window.umami && umami.track) umami.track("registro-google");
+            $("#g-block").hidden = true;
+            $("#reg-form").hidden = true;
+            var gd = $("#g-done");
+            gd.hidden = false;
+            gd.focus();
+          } else {
+            show(gm, (r.d && typeof r.d.detail === "string") ? r.d.detail : "No se pudo entrar con Google. Prueba con tu correo.", "err");
+          }
+        }).catch(function () {
+          show(gm, "No se pudo conectar. Inténtalo de nuevo en unos minutos.", "err");
+        });
+      }
+    });
+    google.accounts.id.renderButton(box, { theme: "outline", size: "large", text: "continue_with", shape: "rectangular", logo_alignment: "left", width: Math.min(360, Math.max(240, box.parentNode.clientWidth || 320)), locale: "es" });
+  }
+  initGoogle(0);
 })();
