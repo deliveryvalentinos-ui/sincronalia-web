@@ -5,6 +5,7 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="66f88fee-295c-4323-b4b6-4681b32ba2e7"></script></head>
 <body><a class="skip" href="#contenido">Saltar al contenido</a><header><a class="brand brand-official" href="/" aria-label="Sincronalia, inicio"><img class="brand-logo" src="/logo-sincronalia.png" alt="Sincronalia · Gestión inteligente" width="1086" height="362"></a><nav id="nav" class="guide-nav" aria-label="Principal"><a class="btn small" href="/">Inicio <span aria-hidden="true">↗</span></a><a class="btn small" href="/#contacto">Contáctanos <span aria-hidden="true">↗</span></a></nav></header>
 <main id="contenido"><section class="reg"><p class="eyebrow">PRUEBA GRATUITA</p><h1>Comienza a usar<br><em>Sincronalia</em> gratis</h1><p class="guide-lead">30 días gratis con acceso completo. Crea tu cuenta, confirma tu correo y entra en la app. Sin tarjeta y sin permanencia.</p>
+<div id="g-block" class="reg-google"><div id="g-btn" aria-label="Continuar con Google"></div><p class="reg-hint">Con Google es lo más rápido: sin contraseña y sin esperar ningún correo. Al continuar aceptas las <a href="/condiciones/" target="_blank" rel="noopener">condiciones del servicio</a> y la <a href="https://cheflogic-pruebas.onrender.com/privacidad" target="_blank" rel="noopener">política de privacidad</a>.</p><p id="g-msg" class="reg-msg" role="alert" hidden></p><p class="reg-or"><span>o con tu correo</span></p></div>
 <form id="reg-form" class="reg-form" novalidate>
 <label for="restaurant">Nombre del restaurante</label><input id="restaurant" name="restaurant" type="text" autocomplete="organization" required minlength="2" maxlength="100">
 <label for="owner">Tu nombre</label><input id="owner" name="owner" type="text" autocomplete="name" required minlength="2" maxlength="100">
@@ -18,7 +19,8 @@
 <p id="reg-msg" class="reg-msg" role="alert" hidden></p>
 <p class="reg-hint reg-price">Sin tarjeta. Al terminar la prueba no pierdes nada: tus datos se conservan. Oferta fundador: los 20 primeros pagan 19,90 €/mes + IVA para siempre con el código FUNDADOR.</p>
 </form>
+<div id="g-done" class="reg-done" tabindex="-1" hidden><h2>¡Cuenta creada!</h2><p>Tu restaurante ya está listo con 30 días gratis. Descarga la app e inicia sesión con la misma cuenta de Google.</p><p><a class="btn" href="https://play.google.com/store/apps/details?id=com.cheflogic.app&amp;utm_source=web&amp;utm_medium=registro-google">Descargar en Google Play</a></p></div>
 <div id="reg-done" class="reg-done" tabindex="-1" hidden><h2>Revisa tu correo</h2><p>Te hemos enviado un enlace a <strong id="reg-done-email"></strong> para activar tu cuenta. Caduca en 30 minutos.</p><p>Si no lo ves, mira en spam o correo no deseado. Si ya tenías una cuenta con ese correo, te lo hemos indicado en el mensaje.</p></div>
 </section></main>
 <footer class="sub-footer"><a class="brand brand-official" href="/" aria-label="Sincronalia, inicio"><img class="brand-logo" src="/logo-sincronalia.png" alt="Sincronalia · Gestión inteligente" width="1086" height="362" loading="lazy"></a><p>Tu restaurante, en perfecta sincronía.</p><div><span>© 2026 Sincronalia</span></div></footer>
-<script src="/registro/registro.js" defer></script></body></html>
+<script src="https://accounts.google.com/gsi/client" async defer></script><script src="/registro/registro.js" defer></script></body></html>
