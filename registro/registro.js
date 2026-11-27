@@ -11,7 +11,7 @@
 
   function errorText(res, data) {
     if (data && typeof data.detail === "string") return data.detail;
-    if (res.status === 422) return "Revisa los datos: la contraseña necesita 12 caracteres, con mayúsculas, minúsculas y números.";
+    if (res.status === 422) return "Revisa los datos: la contraseña necesita al menos 8 caracteres y no puede ser solo números.";
     return "Ha ocurrido un error. Inténtalo de nuevo en unos minutos.";
   }
 
@@ -32,18 +32,15 @@
       if (!hint) return;
       var v = pw.value;
       if (!v) { hint.textContent = hintBase; return; }
-      var falta = [];
-      if (v.length < 12) falta.push("te faltan " + (12 - v.length) + " caracteres");
-      if (!/[A-Z]/.test(v)) falta.push("una mayúscula");
-      if (!/[a-z]/.test(v)) falta.push("una minúscula");
-      if (!/\d/.test(v)) falta.push("un número");
-      hint.textContent = falta.length ? "Aún necesitas: " + falta.join(", ") + "." : "Contraseña válida.";
+      if (v.length < 8) hint.textContent = "Te faltan " + (8 - v.length) + " caracteres.";
+      else if (/^\d+$/.test(v)) hint.textContent = "Añade alguna letra.";
+      else hint.textContent = "Contraseña válida.";
     });
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var v = pw.value;
-      if (v.length < 12 || !/[A-Z]/.test(v) || !/[a-z]/.test(v) || !/\d/.test(v)) {
-        show(msg, "La contraseña necesita al menos 12 caracteres, con mayúsculas, minúsculas y números.", "err");
+      if (v.length < 8 || /^\d+$/.test(v)) {
+        show(msg, "La contraseña necesita al menos 8 caracteres y no puede ser solo números.", "err");
         pw.focus();
         return;
       }
@@ -55,7 +52,6 @@
       msg.hidden = true;
       var body = {
         restaurant_name: $("#restaurant").value.trim(),
-        owner_name: $("#owner").value.trim(),
         email: $("#email").value.trim(),
         password: v,
         accept_terms: true,
